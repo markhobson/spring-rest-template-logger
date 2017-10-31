@@ -1,7 +1,7 @@
 RestTemplate Logger
 ===================
 
-Spring RestTemplate customizer to log HTTP traffic.
+Spring `RestTemplate` customizer to log HTTP traffic.
 
 Getting started
 ---------------
