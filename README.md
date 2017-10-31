@@ -1,2 +1,4 @@
-# rest-template-log
-Spring RestTemplate customizer to log request/response bodies.
+rest-template-logger
+====================
+
+Spring RestTemplate customizer to log HTTP traffic.
