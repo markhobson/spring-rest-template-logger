@@ -36,6 +36,12 @@ level:
 ...
 ```
 
+Acknowledgements
+----------------
+
+Thanks to [@nwholloway](https://github.com/nwholloway) and [@hdpe](https://github.com/hdpe) for the original
+implementation.
+
 License
 -------
 
