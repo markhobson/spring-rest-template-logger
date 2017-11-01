@@ -26,7 +26,7 @@
 	<artifactId>rest-template-logger</artifactId>
 	<version>0.2.0-SNAPSHOT</version>
 	
-	<name>Rest Template Logger</name>
+	<name>Spring RestTemplate Logger</name>
 	<description>Spring RestTemplate customizer to log HTTP traffic.</description>
 	<url>https://github.com/markhobson/rest-template-logger</url>
 	<inceptionYear>2017</inceptionYear>

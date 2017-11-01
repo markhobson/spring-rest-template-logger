@@ -1,5 +1,5 @@
-RestTemplate Logger
-===================
+Spring RestTemplate Logger
+==========================
 
 Spring `RestTemplate` customizer to log HTTP traffic.
 
