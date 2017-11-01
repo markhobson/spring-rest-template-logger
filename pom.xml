@@ -81,6 +81,23 @@
 			</plugins>
 		
 		</pluginManagement>
+		
+		<plugins>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+		</plugins>
 	
 	</build>
 	
@@ -96,6 +113,12 @@
 				<scope>import</scope>
 			</dependency>
 			
+			<dependency>
+				<groupId>com.github.tomakehurst</groupId>
+				<artifactId>wiremock</artifactId>
+				<version>2.10.1</version>
+			</dependency>
+
 		</dependencies>
 		
 	</dependencyManagement>
@@ -115,6 +138,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.github.tomakehurst</groupId>
+			<artifactId>wiremock</artifactId>
 			<scope>test</scope>
 		</dependency>
 		
