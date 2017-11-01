@@ -45,12 +45,20 @@ import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options
 @SpringBootTest
 public class LoggingCustomizerIT
 {
+	// ----------------------------------------------------------------------------------------------------------------
+	// fields
+	// ----------------------------------------------------------------------------------------------------------------
+	
 	@Rule
 	public WireMockRule wireMockRule = new WireMockRule(options().dynamicPort());
 	
 	private Log log;
 	
 	private RestTemplate restTemplate;
+	
+	// ----------------------------------------------------------------------------------------------------------------
+	// JUnit methods
+	// ----------------------------------------------------------------------------------------------------------------
 	
 	@Before
 	public void setUp()
@@ -64,6 +72,10 @@ public class LoggingCustomizerIT
 			.build();
 	}
 	
+	// ----------------------------------------------------------------------------------------------------------------
+	// tests
+	// ----------------------------------------------------------------------------------------------------------------
+
 	@Test
 	public void canLogRequest()
 	{
