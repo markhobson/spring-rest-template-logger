@@ -47,4 +47,4 @@ License
 
 * [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
 
-[![Build Status](https://travis-ci.org/markhobson/rest-template-logger.svg?branch=master)](https://travis-ci.org/markhobson/rest-template-logger)
+[![Build Status](https://travis-ci.org/markhobson/spring-rest-template-logger.svg?branch=master)](https://travis-ci.org/markhobson/spring-rest-template-logger)
