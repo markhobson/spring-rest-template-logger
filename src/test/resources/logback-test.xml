@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+	<include resource="org/springframework/boot/logging/logback/base.xml"/>
+	<root level="WARN"/>
+	<!-- Workaround https://github.com/tomakehurst/wiremock/issues/563 -->
+	<logger name="org.eclipse.jetty.util.thread.QueuedThreadPool" level="ERROR"/>
+</configuration>
