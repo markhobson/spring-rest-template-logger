@@ -23,7 +23,7 @@
 	
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.hobsoft.spring</groupId>
-	<artifactId>rest-template-logger</artifactId>
+	<artifactId>spring-rest-template-logger</artifactId>
 	<version>0.2.0-SNAPSHOT</version>
 	
 	<name>Spring RestTemplate Logger</name>
