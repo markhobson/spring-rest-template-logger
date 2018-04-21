@@ -11,8 +11,8 @@ Add a dependency to your Maven project:
 ```xml
 <dependency>
 	<groupId>org.hobsoft.spring</groupId>
-	<artifactId>rest-template-logger</artifactId>
-	<version>0.1.0</version>
+	<artifactId>spring-rest-template-logger</artifactId>
+	<version>1.0.0</version>
 </dependency>
 ```
 
