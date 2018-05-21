@@ -30,6 +30,8 @@ public class LoggingCustomizer implements RestTemplateCustomizer
 	
 	private final Log log;
 	
+	private final LogFormatter formatter;
+	
 	// ----------------------------------------------------------------------------------------------------------------
 	// constructors
 	// ----------------------------------------------------------------------------------------------------------------
@@ -41,7 +43,13 @@ public class LoggingCustomizer implements RestTemplateCustomizer
 	
 	public LoggingCustomizer(Log log)
 	{
+		this(log, new DefaultLogFormatter());
+	}
+	
+	public LoggingCustomizer(Log log, LogFormatter formatter)
+	{
 		this.log = log;
+		this.formatter = formatter;
 	}
 	
 	// ----------------------------------------------------------------------------------------------------------------
@@ -52,6 +60,6 @@ public class LoggingCustomizer implements RestTemplateCustomizer
 	public void customize(RestTemplate restTemplate)
 	{
 		restTemplate.setRequestFactory(new BufferingClientHttpRequestFactory(restTemplate.getRequestFactory()));
-		restTemplate.getInterceptors().add(new LoggingInterceptor(log));
+		restTemplate.getInterceptors().add(new LoggingInterceptor(log, formatter));
 	}
 }

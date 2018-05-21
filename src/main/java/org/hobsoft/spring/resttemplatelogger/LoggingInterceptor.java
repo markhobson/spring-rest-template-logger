@@ -38,10 +38,10 @@ public class LoggingInterceptor implements ClientHttpRequestInterceptor
 	// constructors
 	// ----------------------------------------------------------------------------------------------------------------
 	
-	public LoggingInterceptor(Log log)
+	public LoggingInterceptor(Log log, LogFormatter formatter)
 	{
 		this.log = log;
-		this.formatter = new DefaultLogFormatter();
+		this.formatter = formatter;
 	}
 	
 	// ----------------------------------------------------------------------------------------------------------------
