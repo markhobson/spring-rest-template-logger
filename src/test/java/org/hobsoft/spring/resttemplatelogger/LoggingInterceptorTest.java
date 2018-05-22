@@ -14,27 +14,20 @@
 package org.hobsoft.spring.resttemplatelogger;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 import org.apache.commons.logging.Log;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.client.ClientHttpRequestExecution;
+import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.mock.http.client.MockClientHttpRequest;
-import org.springframework.mock.http.client.MockClientHttpResponse;
-
-import static java.nio.charset.StandardCharsets.ISO_8859_1;
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.springframework.http.HttpMethod.POST;
-import static org.springframework.http.HttpStatus.OK;
-import static org.springframework.http.MediaType.parseMediaType;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 /**
  * Tests {@code LoggingInterceptor}.
@@ -48,6 +41,9 @@ public class LoggingInterceptorTest
 	
 	@Mock
 	private Log log;
+	
+	@Mock
+	private LogFormatter formatter;
 	
 	private LoggingInterceptor loggingInterceptor;
 	
@@ -63,7 +59,7 @@ public class LoggingInterceptorTest
 	{
 		when(log.isDebugEnabled()).thenReturn(true);
 		
-		loggingInterceptor = new LoggingInterceptor(log);
+		loggingInterceptor = new LoggingInterceptor(log, formatter);
 	}
 	
 	// ----------------------------------------------------------------------------------------------------------------
@@ -71,53 +67,29 @@ public class LoggingInterceptorTest
 	// ----------------------------------------------------------------------------------------------------------------
 	
 	@Test
-	public void canLogRequestUsingDefaultCharset() throws IOException, URISyntaxException
+	public void canLogRequest() throws IOException
 	{
-		MockClientHttpRequest request = new MockClientHttpRequest(POST, new URI("/hello"));
-		byte[] body = "world £".getBytes(ISO_8859_1);
-		when(execution.execute(request, body)).thenReturn(new MockClientHttpResponse(new byte[0], OK));
+		MockClientHttpRequest request = new MockClientHttpRequest();
+		byte[] body = new byte[] {(byte) 1};
+		when(formatter.formatRequest(request, body)).thenReturn("message");
 		
 		loggingInterceptor.intercept(request, body, execution);
 		
-		verify(log).debug("Request: POST /hello world £");
+		verify(log).debug("message");
 	}
 	
 	@Test
-	public void canLogRequestUsingCharset() throws IOException, URISyntaxException
+	public void canLogResponse() throws IOException
 	{
-		MockClientHttpRequest request = new MockClientHttpRequest(POST, new URI("/hello"));
-		request.getHeaders().setContentType(parseMediaType("text/plain;charset=UTF-8"));
-		byte[] body = "world £".getBytes(UTF_8);
-		when(execution.execute(request, body)).thenReturn(new MockClientHttpResponse(new byte[0], OK));
+		MockClientHttpRequest request = new MockClientHttpRequest();
+		byte[] body = new byte[] {(byte) 1};
+		
+		ClientHttpResponse response = withSuccess().createResponse(null);
+		when(execution.execute(request, body)).thenReturn(response);
+		when(formatter.formatResponse(response)).thenReturn("message");
 		
 		loggingInterceptor.intercept(request, body, execution);
 		
-		verify(log).debug("Request: POST /hello world £");
-	}
-	
-	@Test
-	public void canLogResponseUsingDefaultCharset() throws IOException, URISyntaxException
-	{
-		MockClientHttpRequest request = new MockClientHttpRequest();
-		byte[] body = "hello £".getBytes(ISO_8859_1);
-		when(execution.execute(request, new byte[0])).thenReturn(new MockClientHttpResponse(body, OK));
-		
-		loggingInterceptor.intercept(request, new byte[0], execution);
-		
-		verify(log).debug("Response: 200 hello £");
-	}
-	
-	@Test
-	public void canLogResponseUsingCharset() throws IOException, URISyntaxException
-	{
-		MockClientHttpRequest request = new MockClientHttpRequest();
-		byte[] body = "hello £".getBytes(UTF_8);
-		MockClientHttpResponse response = new MockClientHttpResponse(body, OK);
-		response.getHeaders().setContentType(parseMediaType("text/plain;charset=UTF-8"));
-		when(execution.execute(request, new byte[0])).thenReturn(response);
-		
-		loggingInterceptor.intercept(request, new byte[0], execution);
-		
-		verify(log).debug("Response: 200 hello £");
+		verify(log).debug("message");
 	}
 }
