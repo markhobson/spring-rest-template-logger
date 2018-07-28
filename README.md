@@ -1,10 +1,8 @@
-Spring RestTemplate Logger
-==========================
+# Spring RestTemplate Logger
 
 Spring `RestTemplate` customizer to log HTTP traffic.
 
-Getting started
----------------
+## Getting started
 
 Add a dependency to your Maven project:
 
@@ -36,14 +34,12 @@ level:
 ...
 ```
 
-Acknowledgements
-----------------
+## Acknowledgements
 
 Thanks to [@nwholloway](https://github.com/nwholloway) and [@hdpe](https://github.com/hdpe) for the original
 implementation.
 
-License
--------
+## License
 
 * [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
 
