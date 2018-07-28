@@ -46,6 +46,19 @@ RestTemplate restTemplate = new RestTemplateBuilder()
 	.build();
 ```
 
+### Customising the log format
+
+To use a different format when logging HTTP traffic, implement `LogFormatter` and pass it to the customizer: 
+
+```java
+RestTemplate restTemplate = new RestTemplateBuilder()
+	.customizers(new LoggingCustomizer(LogFactory.getLog(LoggingCustomizer.class), new MyLogFormatter()))
+	.build();
+```
+
+Consider subclassing `DefaultLogFormatter` and overriding `formatBody` if you only need to customise the logged HTTP
+body.
+
 ## Acknowledgements
 
 Thanks to [@nwholloway](https://github.com/nwholloway) and [@hdpe](https://github.com/hdpe) for the original
