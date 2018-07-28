@@ -34,6 +34,18 @@ level:
 ...
 ```
 
+## Configuration
+
+### Using a different logger
+
+To log HTTP traffic to an alternative logger, simply pass it to the customizer: 
+
+```java
+RestTemplate restTemplate = new RestTemplateBuilder()
+	.customizers(new LoggingCustomizer(LogFactory.getLog("my.http.log")))
+	.build();
+```
+
 ## Acknowledgements
 
 Thanks to [@nwholloway](https://github.com/nwholloway) and [@hdpe](https://github.com/hdpe) for the original
