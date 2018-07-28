@@ -19,7 +19,7 @@ Customize your `RestTemplate` as follows:
 ```java
 RestTemplate restTemplate = new RestTemplateBuilder()
 	.customizers(new LoggingCustomizer())
-	.build()
+	.build();
 ```
 
 Now all `RestTemplate` HTTP traffic will be logged to `org.hobsoft.spring.resttemplatelogger.LoggingCustomizer` at debug
