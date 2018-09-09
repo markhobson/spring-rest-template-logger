@@ -10,7 +10,7 @@ Add a dependency to your Maven project:
 <dependency>
 	<groupId>org.hobsoft.spring</groupId>
 	<artifactId>spring-rest-template-logger</artifactId>
-	<version>1.0.0</version>
+	<version>2.0.0</version>
 </dependency>
 ```
 
