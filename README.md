@@ -22,6 +22,12 @@ RestTemplate restTemplate = new RestTemplateBuilder()
 	.build();
 ```
 
+Ensure that debug logging is enabled in `application.properties`:
+
+```properties
+logging.level.org.hobsoft.spring.resttemplatelogger.LoggingCustomizer = DEBUG
+```
+
 Now all `RestTemplate` HTTP traffic will be logged to `org.hobsoft.spring.resttemplatelogger.LoggingCustomizer` at debug
 level:
 
