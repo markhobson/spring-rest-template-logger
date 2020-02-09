@@ -40,6 +40,8 @@ level:
 ...
 ```
 
+See the [demo](demo) Spring Boot application to see this in action.
+
 ## Configuration
 
 ### Using a different logger
