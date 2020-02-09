@@ -32,11 +32,11 @@ Now all `RestTemplate` HTTP traffic will be logged to `org.hobsoft.spring.restte
 level:
 
 ```
-21:14:53.688 [main] DEBUG org.hobsoft.spring.resttemplatelogger.LoggingCustomizer - Request: GET http://www.hobsoft.org/ 
-21:14:53.892 [main] DEBUG org.hobsoft.spring.resttemplatelogger.LoggingCustomizer - Response: 200 <!DOCTYPE html>
+2020-02-09 10:59:48.954 DEBUG 17602 --- [nio-8080-exec-1] o.h.s.r.LoggingCustomizer                : Request: GET http://example.com/ 
+2020-02-09 10:59:49.291 DEBUG 17602 --- [nio-8080-exec-1] o.h.s.r.LoggingCustomizer                : Response: 200 <!doctype html>
 <html>
-	<head>
-		<title>Hobsoft</title>
+<head>
+    <title>Example Domain</title>
 ...
 ```
 
